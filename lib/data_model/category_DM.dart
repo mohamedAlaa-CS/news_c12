@@ -53,4 +53,7 @@ class CategoryDM {
             bgColor: ColorsManager.green,
             imagePath: AssetsManager.general),
       ];
+  static get(){
+    print('Hello');
+  }
 }

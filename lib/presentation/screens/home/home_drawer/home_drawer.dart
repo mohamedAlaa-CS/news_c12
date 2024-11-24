@@ -34,53 +34,42 @@ class HomeDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                // InkWell(
-                //   onTap: () {
-                //     onMenuItemClicked(MenuItem.categories);
-                //   },
-                //   child: Row(
-                //     children: [
-                //       Icon(Icons.list),
-                //       SizedBox(
-                //         width: 8.w,
-                //       ),
-                //       Text(
-                //         StringsManager.categories,
-                //         style: AppStyles.categories,
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // InkWell(
-                //   onTap: () {
-                //     onMenuItemClicked(MenuItem.settings);
-                //   },
-                //   child: Row(
-                //     children: [
-                //       Icon(Icons.settings),
-                //       SizedBox(
-                //         width: 8.w,
-                //       ),
-                //       Text(
-                //         StringsManager.settings,
-                //         style: AppStyles.categories,
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                buildDrawerItem(
-                    icon: Icons.list,
-                    text: StringsManager.categories,
-                    onClicked: onMenuItemClicked,
-                    item: MenuItem.categories),
-                SizedBox(
-                  height: 12.h,
+                InkWell(
+                  onTap: () {
+                    onMenuItemClicked(MenuItem.categories);
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.list),
+                      SizedBox(
+                        width: 8.w,
+                      ),
+                      Text(
+                        StringsManager.categories,
+                        style: AppStyles.categories,
+                      ),
+                    ],
+                  ),
                 ),
-                buildDrawerItem(
-                    icon: Icons.settings,
-                    text: StringsManager.settings,
-                    onClicked: onMenuItemClicked,
-                    item: MenuItem.settings)
+                SizedBox(height: 12.h,),
+                InkWell(
+                  onTap: () {
+                    onMenuItemClicked(MenuItem.settings);
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.settings),
+                      SizedBox(
+                        width: 8.w,
+                      ),
+                      Text(
+                        StringsManager.settings,
+                        style: AppStyles.categories,
+                      ),
+                    ],
+                  ),
+                ),
+
               ],
             ),
           )
@@ -89,30 +78,6 @@ class HomeDrawer extends StatelessWidget {
     );
   }
 
-  Widget buildDrawerItem({
-    IconData? icon,
-    required String text,
-    required MenuItem item,
-    required OnMenuItemClicked onClicked,
-  }) {
-    return InkWell(
-      onTap: () {
-        onClicked(MenuItem.categories);
-      },
-      child: Row(
-        children: [
-          Icon(icon),
-          SizedBox(
-            width: 8.w,
-          ),
-          Text(
-            text,
-            style: AppStyles.categories,
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 enum MenuItem {
