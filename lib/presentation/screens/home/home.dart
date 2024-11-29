@@ -6,17 +6,18 @@ import 'package:news_app_c12_online_sat/presentation/screens/home/home_drawer/ho
 import 'package:news_app_c12_online_sat/presentation/screens/home/tabs/categories/categories.dart';
 import 'package:news_app_c12_online_sat/presentation/screens/home/tabs/category_details/category_details.dart';
 import 'package:news_app_c12_online_sat/presentation/screens/home/tabs/settings/settings.dart';
+import 'package:news_app_c12_online_sat/presentation/screens/news_search_delegate/news_search_deleget.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-    late Widget selectedWidget = Categories(onCategoryClicked: onCategoryClicked) ;
-String appBarTitle = 'News App';
+  late Widget selectedWidget = Categories(onCategoryClicked: onCategoryClicked);
+  String appBarTitle = 'News App';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +26,17 @@ String appBarTitle = 'News App';
           image: DecorationImage(image: AssetImage(AssetsManager.bgPattern))),
       child: Scaffold(
           appBar: AppBar(
-            title:  Text(appBarTitle),
+            title: Text(appBarTitle),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    showSearch(context: context, delegate: NewsSearchDeleget());
+                  },
+                  icon: const Icon(
+                    Icons.search,
+                    size: 32,
+                  ))
+            ],
           ),
           drawer: HomeDrawer(
             onMenuItemClicked: onDrawerItemClick,
@@ -34,20 +45,22 @@ String appBarTitle = 'News App';
     );
   }
 
-  void onCategoryClicked(CategoryDM categoryDM){
-    selectedWidget = CategoryDetails(categoryDM: categoryDM,);
+  void onCategoryClicked(CategoryDM categoryDM) {
+    selectedWidget = CategoryDetails(
+      categoryDM: categoryDM,
+    );
     appBarTitle = categoryDM.title;
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   void onDrawerItemClick(MenuItem item) {
     Navigator.pop(context);
     if (item == MenuItem.categories) {
-      selectedWidget = Categories(onCategoryClicked: onCategoryClicked,);
+      selectedWidget = Categories(
+        onCategoryClicked: onCategoryClicked,
+      );
     } else if (item == MenuItem.settings) {
-      selectedWidget = Settings();
+      selectedWidget = const Settings();
     }
     setState(() {});
   }

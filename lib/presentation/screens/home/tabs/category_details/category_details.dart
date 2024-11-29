@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_c12_online_sat/data/api/api_manager/api_manager.dart';
-import 'package:news_app_c12_online_sat/data/api/model/articles_response/article.dart';
-import 'package:news_app_c12_online_sat/data/api/model/sources_response/source.dart';
-import 'package:news_app_c12_online_sat/data/api/model/sources_response/sources_response.dart';
 import 'package:news_app_c12_online_sat/data_model/category_DM.dart';
 import 'package:news_app_c12_online_sat/presentation/screens/home/tabs/category_details/widgets/category_details_viewModel.dart';
 import 'package:news_app_c12_online_sat/presentation/screens/home/tabs/category_details/widgets/sources_tab_widget/sources_tab_widget.dart';
